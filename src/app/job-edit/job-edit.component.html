@@ -1,0 +1,77 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="ngJobEditForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Date:</label>
+        <input id="date" type="date" class="form-control" formControlName="JobDateApplied" #JobDateApplied>
+        <div *ngIf="ngJobEditForm.controls['JobDateApplied'].invalid &&
+          (ngJobEditForm.controls['JobDateApplied'].dirty || ngJobEditForm.controls['JobDateApplied'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="ngJobEditForm.controls['JobDateApplied'].errors.required">
+            Date Applied is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Job Position:</label>
+        <input type="text" class="form-control" formControlName="JobPosition" #JobPosition />
+        <div *ngIf="ngJobEditForm.controls['JobPosition'].invalid &&
+          (ngJobEditForm.controls['JobPosition'].dirty || ngJobEditForm.controls['JobPosition'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="ngJobEditForm.controls['JobPosition'].errors.required">
+            Position is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Company Name:</label>
+        <input type="text" class="form-control" formControlName="JobCompanyName" #JobCompanyName />
+        <div *ngIf="ngJobEditForm.controls['JobCompanyName'].invalid &&
+          (ngJobEditForm.controls['JobCompanyName'].dirty || ngJobEditForm.controls['JobCompanyName'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="ngJobEditForm.controls['JobCompanyName'].errors.required">
+            Company Name is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Location:</label>
+        <input type="text" class="form-control" formControlName="JobLocation" #JobLocation />
+        <div *ngIf="ngJobEditForm.controls['JobLocation'].invalid &&
+          (ngJobEditForm.controls['JobLocation'].dirty || ngJobEditForm.controls['JobLocation'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="ngJobEditForm.controls['JobLocation'].errors.required">
+            Location is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">URL:</label>
+        <input type="text" class="form-control" formControlName="JobURL" #JobURL />
+        <div *ngIf="ngJobEditForm.controls['JobURL'].invalid &&
+          (ngJobEditForm.controls['JobURL'].dirty || ngJobEditForm.controls['JobURL'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="ngJobEditForm.controls['JobURL'].errors.required">
+            URL is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Job Description:</label>
+        <textarea class="form-control" rows="7" cols="5" formControlName="JobDescription" #JobDescription></textarea>
+        <div *ngIf="ngJobEditForm.controls['JobDescription'].invalid &&
+          (ngJobEditForm.controls['JobDescription'].dirty || ngJobEditForm.controls['JobDescription'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="ngJobEditForm.controls['JobDescription'].errors.required">
+            Description is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click)="updateJob(JobDateApplied.value, JobPosition.value, JobCompanyName.value,
+                                   JobLocation.value, JobURL.value, JobDescription.value, id)"
+                type="submit" class="btn btn-primary" [disabled]="ngJobEditForm.invalid">Update Job</button>
+      </div>
+    </form>
+  </div>
+</div>

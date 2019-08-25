@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="ngJobAddForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Date:</label>
+        <input id="date" type="date" class="form-control" formControlName="JobDateApplied" #JobDateApplied>
+        <div *ngIf="ngJobAddForm.controls['JobDateApplied'].invalid &&
+          (ngJobAddForm.controls['JobDateApplied'].dirty || ngJobAddForm.controls['JobDateApplied'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="ngJobAddForm.controls['JobDateApplied'].errors.required">
+            Date Applied is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Job Position:</label>
+        <mdc-text-field type="text" class="form-control" formControlName="JobPosition" #JobPosition></mdc-text-field>
+        <div *ngIf="ngJobAddForm.controls['JobPosition'].invalid &&
+          (ngJobAddForm.controls['JobPosition'].dirty || ngJobAddForm.controls['JobPosition'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="ngJobAddForm.controls['JobPosition'].errors.required">
+            Position is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Company Name:</label>
+        <mdc-text-field type="text" class="form-control" formControlName="JobCompanyName" #JobCompanyName></mdc-text-field>
+        <div *ngIf="ngJobAddForm.controls['JobCompanyName'].invalid &&
+          (ngJobAddForm.controls['JobCompanyName'].dirty || ngJobAddForm.controls['JobCompanyName'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="ngJobAddForm.controls['JobCompanyName'].errors.required">
+            Company Name is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Location:</label>
+        <mdc-text-field type="text" class="form-control" formControlName="JobLocation" #JobLocation></mdc-text-field>
+        <div *ngIf="ngJobAddForm.controls['JobLocation'].invalid &&
+          (ngJobAddForm.controls['JobLocation'].dirty || ngJobAddForm.controls['JobLocation'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="ngJobAddForm.controls['JobLocation'].errors.required">
+            Location is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">URL:</label>
+        <mdc-text-field type="text" class="form-control" formControlName="JobURL" #JobURL></mdc-text-field>
+        <div *ngIf="ngJobAddForm.controls['JobURL'].invalid &&
+          (ngJobAddForm.controls['JobURL'].dirty || ngJobAddForm.controls['JobURL'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="ngJobAddForm.controls['JobURL'].errors.required">
+            URL is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Job Description:</label>
+        <textarea class="form-control mdc-textarea" rows="7" cols="5" formControlName="JobDescription" #JobDescription></textarea>
+        <div *ngIf="ngJobAddForm.controls['JobDescription'].invalid &&
+          (ngJobAddForm.controls['JobDescription'].dirty || ngJobAddForm.controls['JobDescription'].touched)"
+             class="alert alert-danger">
+          <div *ngIf="ngJobAddForm.controls['JobDescription'].errors.required">
+            Description is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click)="addJob(JobDateApplied.value, JobPosition.value, JobCompanyName.value,
+                                JobLocation.value, JobURL.value, JobDescription.value)"
+                type="submit" class="btn btn-primary"
+                [disabled]="ngJobAddForm.pristine || ngJobAddForm.invalid">Add Job</button>
+      </div>
+    </form>
+  </div>
+</div>
