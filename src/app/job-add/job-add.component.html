@@ -3,7 +3,7 @@
     <form [formGroup]="ngJobAddForm" novalidate>
       <div class="form-group">
         <label class="col-md-4">Date:</label>
-        <input id="date" type="date" class="form-control" formControlName="JobDateApplied" #JobDateApplied>
+        <input id="dateApplied" type="date" class="form-control" formControlName="JobDateApplied" #JobDateApplied>
         <div *ngIf="ngJobAddForm.controls['JobDateApplied'].invalid &&
           (ngJobAddForm.controls['JobDateApplied'].dirty || ngJobAddForm.controls['JobDateApplied'].touched)"
              class="alert alert-danger">

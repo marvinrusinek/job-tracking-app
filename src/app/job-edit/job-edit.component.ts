@@ -16,6 +16,14 @@ export class JobEditComponent implements OnInit {
     this.createForm();
   }
 
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.js.editJob(params['id']).subscribe(res => {
+        this.job = res;
+      });
+    });
+  }
+
   createForm() {
     this.ngJobEditForm = this.fb.group({
       JobDateApplied: ['', Validators.required ],
@@ -27,18 +35,17 @@ export class JobEditComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.js.editJob(params['id']).subscribe(res => {
-        this.job = res;
-      });
-    });
-  }
-
   updateJob(JobDateApplied, JobPosition, JobCompanyName, JobLocation, JobURL, JobDescription, id) {
     this.route.params.subscribe(params => {
       this.js.updateJob(JobDateApplied, JobPosition, JobCompanyName, JobLocation, JobURL, JobDescription, params.id);
       this.router.navigate(['jobs']);
     });
+  }
+
+  parseDate(dateString: string): Date {
+    if (dateString) {
+      return new Date(dateString);
+    }
+    return null;
   }
 }

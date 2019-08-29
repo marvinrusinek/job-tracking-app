@@ -3,7 +3,8 @@
     <form [formGroup]="ngJobEditForm" novalidate>
       <div class="form-group">
         <label class="col-md-4">Date:</label>
-        <input id="date" type="date" class="form-control" formControlName="JobDateApplied" #JobDateApplied>
+        <input id="date" type="date" class="form-control" formControlName="JobDateApplied" #JobDateApplied
+           [value]="job.JobDateApplied | date:'yyyy-MM-dd'" (input)="job.JobDateApplied=parseDate($event.target.value)">
         <div *ngIf="ngJobEditForm.controls['JobDateApplied'].invalid &&
           (ngJobEditForm.controls['JobDateApplied'].dirty || ngJobEditForm.controls['JobDateApplied'].touched)"
              class="alert alert-danger">
@@ -14,7 +15,7 @@
       </div>
       <div class="form-group">
         <label class="col-md-4">Job Position:</label>
-        <input type="text" class="form-control" formControlName="JobPosition" #JobPosition />
+        <input type="text" class="form-control" formControlName="JobPosition" #JobPosition [(ngModel)]="job.JobPosition" />
         <div *ngIf="ngJobEditForm.controls['JobPosition'].invalid &&
           (ngJobEditForm.controls['JobPosition'].dirty || ngJobEditForm.controls['JobPosition'].touched)"
              class="alert alert-danger">
@@ -25,7 +26,7 @@
       </div>
       <div class="form-group">
         <label class="col-md-4">Company Name:</label>
-        <input type="text" class="form-control" formControlName="JobCompanyName" #JobCompanyName />
+        <input type="text" class="form-control" formControlName="JobCompanyName" #JobCompanyName [(ngModel)]="job.JobCompanyName" />
         <div *ngIf="ngJobEditForm.controls['JobCompanyName'].invalid &&
           (ngJobEditForm.controls['JobCompanyName'].dirty || ngJobEditForm.controls['JobCompanyName'].touched)"
              class="alert alert-danger">
@@ -36,7 +37,7 @@
       </div>
       <div class="form-group">
         <label class="col-md-4">Location:</label>
-        <input type="text" class="form-control" formControlName="JobLocation" #JobLocation />
+        <input type="text" class="form-control" formControlName="JobLocation" #JobLocation [(ngModel)]="job.JobLocation" />
         <div *ngIf="ngJobEditForm.controls['JobLocation'].invalid &&
           (ngJobEditForm.controls['JobLocation'].dirty || ngJobEditForm.controls['JobLocation'].touched)"
              class="alert alert-danger">
@@ -47,7 +48,7 @@
       </div>
       <div class="form-group">
         <label class="col-md-4">URL:</label>
-        <input type="text" class="form-control" formControlName="JobURL" #JobURL />
+        <input type="text" class="form-control" formControlName="JobURL" #JobURL [(ngModel)]="job.JobURL" />
         <div *ngIf="ngJobEditForm.controls['JobURL'].invalid &&
           (ngJobEditForm.controls['JobURL'].dirty || ngJobEditForm.controls['JobURL'].touched)"
              class="alert alert-danger">
@@ -58,7 +59,7 @@
       </div>
       <div class="form-group">
         <label class="col-md-4">Job Description:</label>
-        <textarea class="form-control" rows="7" cols="5" formControlName="JobDescription" #JobDescription></textarea>
+        <textarea class="form-control" rows="7" cols="5" formControlName="JobDescription" #JobDescription [(ngModel)]="job.JobDescription"></textarea>
         <div *ngIf="ngJobEditForm.controls['JobDescription'].invalid &&
           (ngJobEditForm.controls['JobDescription'].dirty || ngJobEditForm.controls['JobDescription'].touched)"
              class="alert alert-danger">
